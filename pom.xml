@@ -24,6 +24,7 @@
     <modules>
         <module>tediouscatblog-module-admin</module>
         <module>tediouscatblog-web</module>
+        <module>tediouscatblog-module-common</module>
     </modules>
 
 
@@ -38,11 +39,40 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <lombok.version>1.18.28</lombok.version>
+        <guava.version>31.1-jre</guava.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+
     </properties>
 
     <!-- 统一依赖管理 -->
     <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.tediouscat</groupId>
+                <artifactId>tediouscatblog-module-admin</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>com.tediouscat</groupId>
+                <artifactId>tediouscatblog-module-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!-- 常用工具库 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <build>

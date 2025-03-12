@@ -33,6 +33,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.tediouscat</groupId>
+            <artifactId>tediouscatblog-module-admin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tediouscat</groupId>
+            <artifactId>tediouscatblog-module-common</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
