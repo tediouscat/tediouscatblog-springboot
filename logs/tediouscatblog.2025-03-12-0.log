@@ -1,0 +1,9 @@
+2025-03-12 23:53:49.834 [main] INFO  c.t.t.web.TediouscatblogWebApplication - Starting TediouscatblogWebApplication using Java 1.8.0_311 on DESKTOP-NVKRBLL with PID 30764 (D:\tediouscatblog\tediouscatblog-springboot\tediouscatblog-web\target\classes started by zxc in D:\tediouscatblog\tediouscatblog-springboot)
+2025-03-12 23:53:49.835 [main] INFO  c.t.t.web.TediouscatblogWebApplication - The following profiles are active: prod
+2025-03-12 23:53:50.131 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-03-12 23:53:50.135 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-03-12 23:53:50.135 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2025-03-12 23:53:50.162 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-03-12 23:53:50.162 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 313 ms
+2025-03-12 23:53:50.277 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-03-12 23:53:50.281 [main] INFO  c.t.t.web.TediouscatblogWebApplication - Started TediouscatblogWebApplication in 0.627 seconds (JVM running for 1.099)
