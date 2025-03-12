@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.tediouscat</groupId>
-	<artifactId>weblog-module-admin</artifactId>
+	<artifactId>tediouscatblog-module-admin</artifactId>
 	<name>tediouscatblog-module-admin</name>
 	<description>tediouscatblog-admin (负责管理后台相关功能)</description>
 
