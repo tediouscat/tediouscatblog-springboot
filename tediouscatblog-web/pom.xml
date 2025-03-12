@@ -6,13 +6,13 @@
     <parent>
         <groupId>com.tediouscat</groupId>
         <artifactId>tediouscatblog-springboot</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>{revision}</version>
     </parent>
 
     <groupId>com.tediouscat</groupId>
     <artifactId>tediouscatblog-web</artifactId>
     <name>tediouscatblog-web</name>
-    <description>weblog-web (入口项目，负责博客前台展示相关功能，打包也放在这个模块负责)</description>
+    <description>tediouscatblog-web (入口项目，负责博客前台展示相关功能，打包也放在这个模块负责)</description>
 
     <dependencies>
         <!-- Web 依赖 -->

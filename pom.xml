@@ -7,8 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <!-- 将 Spring Boot 的版本号切换成 2.6 版本 -->
-        <version>2.6.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.6.3</version> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.tediouscat</groupId>
@@ -22,6 +21,8 @@
 
     <!-- 子模块管理 -->
     <modules>
+        <module>tediouscatblog-module-admin</module>
+        <module>tediouscatblog-web</module>
     </modules>
 
 
