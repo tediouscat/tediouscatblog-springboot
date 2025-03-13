@@ -22,11 +22,10 @@ public class TestController {
 
     @PostMapping("/test")
     @ApiOperationLog(description = "测试接口")
-    public Response test(@RequestBody @Validated User user, BindingResult bindingResult) {
-        // 主动定义一个运行时异常，分母不能为零
-        int i = 1 / 0;
+    public Response test(@RequestBody @Validated User user) {
         return Response.success();
     }
+
 
 
 }
