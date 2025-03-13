@@ -37,6 +37,7 @@ public class ApiOperationLogAspect {
             // MDC
             MDC.put("traceId", UUID.randomUUID().toString());
 
+
             // 获取被请求的类和方法
             String className = joinPoint.getTarget().getClass().getSimpleName();
             String methodName = joinPoint.getSignature().getName();
