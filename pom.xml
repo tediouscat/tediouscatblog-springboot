@@ -25,6 +25,7 @@
         <module>tediouscatblog-module-admin</module>
         <module>tediouscatblog-web</module>
         <module>tediouscatblog-module-common</module>
+        <module>tediouscatblog-module-jwt</module>
     </modules>
 
 
