@@ -24,7 +24,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
         log.warn("用户未登录访问受保护的资源: ", authException);
         if (authException instanceof InsufficientAuthenticationException) {
             ResultUtil.fail(response, HttpStatus.UNAUTHORIZED.value(), Response.fail(ResponseCodeEnum.UNAUTHORIZED));
-			return;
         }
 
         ResultUtil.fail(response, HttpStatus.UNAUTHORIZED.value(), Response.fail(authException.getMessage()));

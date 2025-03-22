@@ -9,5 +9,5 @@ public interface UserMapper extends BaseMapper<UserDO> {
         LambdaQueryWrapper<UserDO> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserDO::getUsername, username);
         return selectOne(wrapper);
-}
+    }
 }

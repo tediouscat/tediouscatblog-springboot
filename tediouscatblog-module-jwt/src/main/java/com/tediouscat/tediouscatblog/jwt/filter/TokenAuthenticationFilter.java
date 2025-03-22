@@ -1,4 +1,4 @@
-    package com.tediouscat.tediouscatblog.jwt.filter;
+package com.tediouscat.tediouscatblog.jwt.filter;
 
 import com.tediouscat.tediouscatblog.jwt.utils.JwtTokenHelper;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -10,7 +10,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,13 +21,13 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
+
 
 @Slf4j
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
@@ -35,14 +38,13 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     @Value("${jwt.tokenHeaderKey}")
     private String tokenHeaderKey;
 
-    @Resource
+    @Autowired
     private JwtTokenHelper jwtTokenHelper;
 
-
-    @Resource
+    @Autowired
     private UserDetailsService userDetailsService;
 
-    @Resource
+    @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
 
     @Override
@@ -72,7 +74,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
                 // 从 Token 中解析出用户名
                 String username = jwtTokenHelper.getUsernameByToken(token);
-                
+
                 if (StringUtils.isNotBlank(username)
                         && Objects.isNull(SecurityContextHolder.getContext().getAuthentication())) {
                     // 根据用户名获取用户详情信息
