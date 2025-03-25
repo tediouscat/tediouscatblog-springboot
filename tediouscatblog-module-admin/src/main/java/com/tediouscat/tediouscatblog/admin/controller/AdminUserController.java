@@ -1,6 +1,6 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
-import com.tediouscat.tediouscatblog.admin.model.vo.UpdateAdminUserPasswordReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.user.UpdateAdminUserPasswordReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminUserService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
 import com.tediouscat.tediouscatblog.common.utils.Response;
@@ -27,4 +27,12 @@ public class AdminUserController {
     public Response updatePassword(@RequestBody @Validated UpdateAdminUserPasswordReqVO updateAdminUserPasswordReqVO) {
         return userService.updatePassword(updateAdminUserPasswordReqVO);
     }
+
+    @PostMapping("/user/info")
+    @ApiOperation(value = "获取用户信息")
+    @ApiOperationLog(description = "获取用户信息")
+    public Response findUserInfo() {
+        return userService.findUserInfo();
+    }
+
 }
