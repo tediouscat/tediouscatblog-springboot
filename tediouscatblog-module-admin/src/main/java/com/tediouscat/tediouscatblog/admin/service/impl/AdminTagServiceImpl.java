@@ -3,11 +3,13 @@ package com.tediouscat.tediouscatblog.admin.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.AddTagReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.FindTagPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.FindTagPageListRspVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminTagService;
 import com.tediouscat.tediouscatblog.common.domain.dos.TagDO;
 import com.tediouscat.tediouscatblog.common.domain.mapper.TagMapper;
+import com.tediouscat.tediouscatblog.common.enums.ResponseCodeEnum;
 import com.tediouscat.tediouscatblog.common.utils.PageResponse;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -85,5 +87,15 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
         }
 
         return PageResponse.success(page, vos);
+    }
+
+    public Response deleteTag(DeleteTagReqVO deleteTagReqVO) {
+        // 标签 ID
+        Long tagId = deleteTagReqVO.getId();
+
+        // 根据标签 ID 删除
+        int count = tagMapper.deleteById(tagId);
+
+        return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.TAG_NOT_EXISTED);
     }
 }

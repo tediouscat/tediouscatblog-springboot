@@ -1,6 +1,8 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
+import com.tediouscat.tediouscatblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.AddTagReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.FindTagPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminTagService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
@@ -9,6 +11,7 @@ import com.tediouscat.tediouscatblog.common.utils.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,14 +39,14 @@ public class AdminTagController {
     public PageResponse findTagPageList(@RequestBody @Validated FindTagPageListReqVO findTagPageListReqVO) {
         return tagService.findTagPageList(findTagPageListReqVO);
     }
-    //
-    // @PostMapping("/category/delete")
-    // @ApiOperation(value = "删除分类")
-    // @ApiOperationLog(description = "删除分类")
-    // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    // public Response deleteCategory(@RequestBody @Validated DeleteCategoryReqVO deleteCategoryReqVO) {
-    //     return categoryService.deleteCategory(deleteCategoryReqVO);
-    // }
+
+     @PostMapping("/tag/delete")
+     @ApiOperation(value = "删除标签")
+     @ApiOperationLog(description = "删除标签")
+     @PreAuthorize("hasRole('ROLE_ADMIN')")
+     public Response deleteCategory(@RequestBody @Validated DeleteTagReqVO deleteTagReqVO) {
+         return tagService.deleteTag(deleteTagReqVO);
+     }
     //
     // @PostMapping("/category/select/list")
     // @ApiOperation(value = "分类 Select 下拉列表数据获取")
