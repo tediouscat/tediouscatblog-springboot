@@ -1,9 +1,6 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
-import com.tediouscat.tediouscatblog.admin.model.vo.article.DeleteArticleReqVO;
-import com.tediouscat.tediouscatblog.admin.model.vo.article.FindArticleDetailReqVO;
-import com.tediouscat.tediouscatblog.admin.model.vo.article.FindArticlePageListReqVO;
-import com.tediouscat.tediouscatblog.admin.model.vo.article.PublishArticleReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.article.*;
 import com.tediouscat.tediouscatblog.admin.service.AdminArticleService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
 import com.tediouscat.tediouscatblog.common.utils.Response;
@@ -55,6 +52,13 @@ public class AdminArticleController {
         return articleService.findArticleDetail(findArticlePageListReqVO);
     }
 
+    @PostMapping("/update")
+    @ApiOperation(value = "更新文章")
+    @ApiOperationLog(description = "更新文章")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response updateArticle(@RequestBody @Validated UpdateArticleReqVO updateArticleReqVO) {
+        return articleService.updateArticle(updateArticleReqVO);
+    }
 
 
 
