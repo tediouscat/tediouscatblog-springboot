@@ -11,6 +11,7 @@ import com.tediouscat.tediouscatblog.common.domain.dos.CategoryDO;
 import com.tediouscat.tediouscatblog.common.domain.mapper.CategoryMapper;
 import com.tediouscat.tediouscatblog.common.enums.ResponseCodeEnum;
 import com.tediouscat.tediouscatblog.common.exception.BizException;
+import com.tediouscat.tediouscatblog.common.model.vo.SelectRspVO;
 import com.tediouscat.tediouscatblog.common.utils.PageResponse;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -113,5 +114,27 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
 
         return Response.success();
     }
+
+    @Override
+    public Response findCategorySelectList() {
+        // 查询所有分类
+        List<CategoryDO> categoryDOS = categoryMapper.selectList(null);
+
+        // DO 转 VO
+        List<SelectRspVO> selectRspVOS = null;
+        // 如果分类数据不为空
+        if (!CollectionUtils.isEmpty(categoryDOS)) {
+            // 将分类 ID 作为 Value 值，将分类名称作为 label 展示
+            selectRspVOS = categoryDOS.stream()
+                    .map(categoryDO -> SelectRspVO.builder()
+                            .label(categoryDO.getName())
+                            .value(categoryDO.getId())
+                            .build())
+                    .collect(Collectors.toList());
+        }
+
+        return Response.success(selectRspVOS);
+    }
+
 
 }
