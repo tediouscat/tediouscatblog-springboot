@@ -1,8 +1,10 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
+import com.tediouscat.tediouscatblog.admin.model.FindCategoryPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.category.AddCategoryReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminCategoryService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
+import com.tediouscat.tediouscatblog.common.utils.PageResponse;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,5 +30,11 @@ public class AdminCategoryController {
         return categoryService.addCategory(addCategoryReqVO);
     }
 
+    @PostMapping("/category/list")
+    @ApiOperation(value = "分类分页数据获取")
+    @ApiOperationLog(description = "分类分页数据获取")
+    public PageResponse findCategoryList(@RequestBody @Validated FindCategoryPageListReqVO findCategoryPageListReqVO) {
+        return categoryService.findCategoryList(findCategoryPageListReqVO);
+    }
 
 }

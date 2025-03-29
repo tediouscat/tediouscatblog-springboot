@@ -1,6 +1,8 @@
 package com.tediouscat.tediouscatblog.admin.service;
 
+import com.tediouscat.tediouscatblog.admin.model.FindCategoryPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.category.AddCategoryReqVO;
+import com.tediouscat.tediouscatblog.common.utils.PageResponse;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 
 public interface AdminCategoryService {
@@ -10,4 +12,11 @@ public interface AdminCategoryService {
      * @return
      */
     Response addCategory(AddCategoryReqVO addCategoryReqVO);
+
+    /**
+     * 分类分页数据查询
+     * @param findCategoryPageListReqVO
+     * @return
+     */
+    PageResponse findCategoryList(FindCategoryPageListReqVO findCategoryPageListReqVO);
 }
