@@ -1,5 +1,6 @@
 package com.tediouscat.tediouscatblog.admin.service;
 
+import com.tediouscat.tediouscatblog.admin.model.vo.article.DeleteArticleReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.article.PublishArticleReqVO;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 
@@ -10,4 +11,11 @@ public interface AdminArticleService {
      * @return
      */
     Response publishArticle(PublishArticleReqVO publishArticleReqVO);
+
+    /**
+     * 删除文章
+     * @param deleteArticleReqVO
+     * @return
+     */
+    Response deleteArticle(DeleteArticleReqVO deleteArticleReqVO);
 }
