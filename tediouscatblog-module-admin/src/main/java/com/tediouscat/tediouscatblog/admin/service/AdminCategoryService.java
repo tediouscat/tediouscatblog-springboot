@@ -19,7 +19,7 @@ public interface AdminCategoryService {
      * @param findCategoryPageListReqVO
      * @return
      */
-    PageResponse findCategoryList(FindCategoryPageListReqVO findCategoryPageListReqVO);
+    PageResponse findCategoryPageList(FindCategoryPageListReqVO findCategoryPageListReqVO);
 
     /**
      * 删除分类

@@ -1,8 +1,10 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.AddTagReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.tag.FindTagPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminTagService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
+import com.tediouscat.tediouscatblog.common.utils.PageResponse;
 import com.tediouscat.tediouscatblog.common.utils.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,12 +30,12 @@ public class AdminTagController {
         return tagService.addTags(addTagReqVO);
     }
 
-    // @PostMapping("/category/list")
-    // @ApiOperation(value = "分类分页数据获取")
-    // @ApiOperationLog(description = "分类分页数据获取")
-    // public PageResponse findCategoryList(@RequestBody @Validated FindCategoryPageListReqVO findCategoryPageListReqVO) {
-    //     return categoryService.findCategoryList(findCategoryPageListReqVO);
-    // }
+    @PostMapping("/tag/list")
+    @ApiOperation(value = "标签分页数据获取")
+    @ApiOperationLog(description = "标签分页数据获取")
+    public PageResponse findTagPageList(@RequestBody @Validated FindTagPageListReqVO findTagPageListReqVO) {
+        return tagService.findTagPageList(findTagPageListReqVO);
+    }
     //
     // @PostMapping("/category/delete")
     // @ApiOperation(value = "删除分类")
