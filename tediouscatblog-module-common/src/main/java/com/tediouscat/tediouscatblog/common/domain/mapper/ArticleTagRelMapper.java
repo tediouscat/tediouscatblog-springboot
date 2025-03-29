@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.tediouscat.tediouscatblog.common.config.InsertBatchMapper;
 import com.tediouscat.tediouscatblog.common.domain.dos.ArticleTagRelDO;
 
+import java.util.List;
+
 public interface ArticleTagRelMapper extends InsertBatchMapper<ArticleTagRelDO> {
     /**
      * 根据文章 ID 删除关联记录
@@ -13,6 +15,16 @@ public interface ArticleTagRelMapper extends InsertBatchMapper<ArticleTagRelDO> 
      */
     default int deleteByArticleId(Long articleId) {
         return delete(Wrappers.<ArticleTagRelDO>lambdaQuery()
+                .eq(ArticleTagRelDO::getArticleId, articleId));
+    }
+
+    /**
+     * 根据文章 ID 来查询
+     * @param articleId
+     * @return
+     */
+    default List<ArticleTagRelDO> selectByArticleId(Long articleId) {
+        return selectList(Wrappers.<ArticleTagRelDO>lambdaQuery()
                 .eq(ArticleTagRelDO::getArticleId, articleId));
     }
 }

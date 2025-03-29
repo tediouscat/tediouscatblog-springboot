@@ -1,6 +1,7 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
 import com.tediouscat.tediouscatblog.admin.model.vo.article.DeleteArticleReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.article.FindArticleDetailReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.article.FindArticlePageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.article.PublishArticleReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminArticleService;
@@ -46,6 +47,14 @@ public class AdminArticleController {
     public Response findArticlePageList(@RequestBody @Validated FindArticlePageListReqVO findArticlePageListReqVO) {
         return articleService.findArticlePageList(findArticlePageListReqVO);
     }
+
+    @PostMapping("/detail")
+    @ApiOperation(value = "查询文章详情")
+    @ApiOperationLog(description = "查询文章详情")
+    public Response findArticleDetail(@RequestBody @Validated FindArticleDetailReqVO findArticlePageListReqVO) {
+        return articleService.findArticleDetail(findArticlePageListReqVO);
+    }
+
 
 
 
