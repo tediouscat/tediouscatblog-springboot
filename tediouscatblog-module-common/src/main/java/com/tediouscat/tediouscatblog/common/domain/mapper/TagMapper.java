@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tediouscat.tediouscatblog.common.domain.dos.TagDO;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -25,6 +26,15 @@ public interface TagMapper extends BaseMapper<TagDO> {
                 .orderByDesc(TagDO::getCreateTime); // order by create_time desc
 
         return selectPage(page, wrapper);
+    }
+
+    default List<TagDO> selectByKey(String key) {
+        LambdaQueryWrapper<TagDO> wrapper = new LambdaQueryWrapper<>();
+
+        // 构造模糊查询的条件
+        wrapper.like(TagDO::getName, key).orderByDesc(TagDO::getCreateTime);
+
+        return selectList(wrapper);
     }
 
 

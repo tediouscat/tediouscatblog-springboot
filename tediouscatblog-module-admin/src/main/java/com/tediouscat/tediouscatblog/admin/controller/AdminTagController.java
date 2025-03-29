@@ -4,6 +4,7 @@ import com.tediouscat.tediouscatblog.admin.model.vo.category.DeleteCategoryReqVO
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.AddTagReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.tag.FindTagPageListReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.tag.SearchTagsReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminTagService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
 import com.tediouscat.tediouscatblog.common.utils.PageResponse;
@@ -47,13 +48,13 @@ public class AdminTagController {
      public Response deleteCategory(@RequestBody @Validated DeleteTagReqVO deleteTagReqVO) {
          return tagService.deleteTag(deleteTagReqVO);
      }
-    //
-    // @PostMapping("/category/select/list")
-    // @ApiOperation(value = "分类 Select 下拉列表数据获取")
-    // @ApiOperationLog(description = "分类 Select 下拉列表数据获取")
-    // public Response findCategorySelectList() {
-    //     return categoryService.findCategorySelectList();
-    // }
+
+    @PostMapping("/tag/search")
+    @ApiOperation(value = "标签模糊查询")
+    @ApiOperationLog(description = "标签模糊查询")
+    public Response searchTags(@RequestBody @Validated SearchTagsReqVO searchTagsReqVO) {
+        return tagService.searchTags(searchTagsReqVO);
+    }
 
 
 }
