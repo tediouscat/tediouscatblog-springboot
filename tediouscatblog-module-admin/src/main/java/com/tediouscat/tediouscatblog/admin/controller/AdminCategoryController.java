@@ -2,6 +2,7 @@ package com.tediouscat.tediouscatblog.admin.controller;
 
 import com.tediouscat.tediouscatblog.admin.model.FindCategoryPageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.category.AddCategoryReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminCategoryService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
 import com.tediouscat.tediouscatblog.common.utils.PageResponse;
@@ -36,5 +37,13 @@ public class AdminCategoryController {
     public PageResponse findCategoryList(@RequestBody @Validated FindCategoryPageListReqVO findCategoryPageListReqVO) {
         return categoryService.findCategoryList(findCategoryPageListReqVO);
     }
+
+    @PostMapping("/category/delete")
+    @ApiOperation(value = "删除分类")
+    @ApiOperationLog(description = "删除分类")
+    public Response deleteCategory(@RequestBody @Validated DeleteCategoryReqVO deleteCategoryReqVO) {
+        return categoryService.deleteCategory(deleteCategoryReqVO);
+    }
+
 
 }
