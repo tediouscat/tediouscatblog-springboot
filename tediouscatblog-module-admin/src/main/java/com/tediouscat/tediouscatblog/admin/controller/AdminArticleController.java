@@ -1,6 +1,7 @@
 package com.tediouscat.tediouscatblog.admin.controller;
 
 import com.tediouscat.tediouscatblog.admin.model.vo.article.DeleteArticleReqVO;
+import com.tediouscat.tediouscatblog.admin.model.vo.article.FindArticlePageListReqVO;
 import com.tediouscat.tediouscatblog.admin.model.vo.article.PublishArticleReqVO;
 import com.tediouscat.tediouscatblog.admin.service.AdminArticleService;
 import com.tediouscat.tediouscatblog.common.aspect.ApiOperationLog;
@@ -38,6 +39,14 @@ public class AdminArticleController {
     public Response deleteArticle(@RequestBody @Validated DeleteArticleReqVO deleteArticleReqVO) {
         return articleService.deleteArticle(deleteArticleReqVO);
     }
+
+    @PostMapping("/list")
+    @ApiOperation(value = "查询文章分页数据")
+    @ApiOperationLog(description = "查询文章分页数据")
+    public Response findArticlePageList(@RequestBody @Validated FindArticlePageListReqVO findArticlePageListReqVO) {
+        return articleService.findArticlePageList(findArticlePageListReqVO);
+    }
+
 
 
 }
