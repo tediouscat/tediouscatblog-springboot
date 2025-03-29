@@ -1,4 +1,8 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB # 限制单个上传文件的最大大小为 10MB。如果上传的文件大小超过这个值，将会被拒绝上传。
+      max-request-size: 10MB # 限制整个上传请求的最大大小为 10MB。这包括所有上传文件的大小之和。如果请求总大小超过这个值，将会被拒绝。
   datasource:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     url: jdbc:p6spy:mysql://127.0.0.1:3306/tediouscatblog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
@@ -26,4 +30,14 @@ jwt:
   tokenPrefix: Bearer
   tokenHeaderKey: Authorization
   tokenExpireTime: 1440
+
+
+#=================================================================
+# minio
+#=================================================================
+minio:
+  endpoint: localhost:9000
+  accessKey: miniokey
+  secretKey: miniosecretkdy
+  bucketName: tediouscatblog
 
